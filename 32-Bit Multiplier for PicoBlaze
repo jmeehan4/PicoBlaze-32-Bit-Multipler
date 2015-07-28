@@ -1,0 +1,1267 @@
+
+main:
+		LOAD s2, 0x00
+		LOAD s3, 0x00
+		LOAD s4, 0x00
+		LOAD s5, 0x0c
+
+		LOAD s6, 0x00
+		LOAD s7, 0x00
+		LOAD s8, 0x00
+		LOAD s9, 0x0c
+		
+		LOAD sA, 0x01
+        LOAD sB, 0x00								
+		LOAD sC, 0xff
+        LOAD sD, 0x00
+        LOAD sE, 0x00
+        LOAD sF, 0x00     
+loop:
+            
+        COMPARE sC, 0xff
+        JUMP Z, regSwitch1
+
+        COMPARE sC, 0xfc
+        JUMP Z, regSwitch2
+
+        COMPARE sC, 0xf8
+        JUMP Z, regSwitch3
+
+        COMPARE sC, 0xf4
+        JUMP Z, regSwitch4
+
+        COMPARE sC, 0xf0
+        JUMP Z, regSwitch5
+
+        COMPARE sC, 0xec
+        JUMP Z, regSwitch6
+
+        COMPARE sC, 0xe8
+        JUMP Z, regSwitch7
+
+        COMPARE sC, 0xe4
+        JUMP Z, regSwitch8
+    
+        COMPARE sC, 0xe0
+        JUMP Z, regSwitch9
+
+        COMPARE sC, 0xdc
+        JUMP Z, regSwitch10
+
+        COMPARE sC, 0xd8
+        JUMP Z, regSwitch11
+
+        COMPARE sC, 0xd4
+        JUMP Z, regSwitch12
+
+        COMPARE sC, 0xd0
+        JUMP Z, regSwitch13
+
+        COMPARE sC, 0xcc
+        JUMP Z, regSwitch14
+
+        COMPARE sC, 0xc8
+        JUMP Z, regSwitch15
+
+        COMPARE sC, 0xc4
+        JUMP Z, regSwitch16
+
+        COMPARE sC, 0xc0
+        JUMP Z, regSwitch17
+
+        COMPARE sC, 0xbc
+        JUMP Z, regSwitch18
+
+        COMPARE sC, 0xb8
+        JUMP Z, regSwitch19
+
+        COMPARE sC, 0xb4
+        JUMP Z, regSwitch20
+
+        COMPARE sC, 0xb0
+        JUMP Z, regSwitch21
+
+        COMPARE sC, 0xac
+        JUMP Z, regSwitch22
+
+        COMPARE sC, 0xa8
+        JUMP Z, regSwitch23
+
+        COMPARE sC, 0x0a4
+        JUMP Z, regSwitch24
+    
+        COMPARE sC, 0xa0
+        JUMP Z, regSwitch25
+
+        COMPARE sC, 0x9c
+        JUMP Z, regSwitch26
+
+        COMPARE sC, 0x98
+        JUMP Z, regSwitch27
+
+        COMPARE sC, 0x94
+        JUMP Z, regSwitch28
+
+        COMPARE sC, 0x90
+        JUMP Z, regSwitch29
+
+        COMPARE sC, 0x8c
+        JUMP Z, regSwitch30
+
+        COMPARE sC, 088
+        JUMP Z, regSwitch31
+
+        COMPARE sC, 0x84
+        JUMP Z, regSwitch32
+
+        COMPARE sC, 0x80
+        JUMP Z, regSwitch33
+
+        COMPARE sC, 0x7c
+        JUMP Z, regSwitch34
+
+        COMPARE sC, 0x78
+        JUMP Z, regSwitch35
+
+        COMPARE sC, 0x74
+        JUMP Z, regSwitch36
+
+        COMPARE sC, 0x70
+        JUMP Z, regSwitch37
+
+        COMPARE sC, 0x6c
+        JUMP Z, regSwitch38
+
+        COMPARE sC, 0x68
+        JUMP Z, regSwitch39
+
+        COMPARE sC, 0x64
+        JUMP Z, regSwitch40
+    
+        COMPARE sC, 0x60
+        JUMP Z, regSwitch41
+
+        COMPARE sC, 0x5c
+        JUMP Z, regSwitch42
+
+        COMPARE sC, 0x58
+        JUMP Z, regSwitch43
+
+        COMPARE sC, 0x54
+        JUMP Z, regSwitch44
+
+        COMPARE sC, 0x50
+        JUMP Z, regSwitch45
+
+        COMPARE sC, 0x4c
+        JUMP Z, regSwitch46
+
+        COMPARE sC, 0x48
+        JUMP Z, regSwitch47
+
+        COMPARE sC, 0x44
+        JUMP Z, regSwitch48
+
+        COMPARE sC, 0x40
+        JUMP Z, regSwitch49
+
+        COMPARE sC, 0x3c
+        JUMP Z, regSwitch50
+
+        COMPARE sC, 0x38
+        JUMP Z, regSwitch51
+
+        COMPARE sC, 0x34
+        JUMP Z, regSwitch52
+
+        COMPARE sC, 0x30
+        JUMP Z, regSwitch53
+
+        COMPARE sC, 0x2c
+        JUMP Z, regSwitch54
+
+        COMPARE sC, 0x28
+        JUMP Z, regSwitch55
+
+        COMPARE sC, 0x24
+        JUMP Z, regSwitch56
+    
+        COMPARE sC, 0x20
+        JUMP Z, regSwitch57
+
+        COMPARE sC, 0x1c
+        JUMP Z, regSwitch58
+
+        COMPARE sC, 0x18
+        JUMP Z, regSwitch59
+
+        COMPARE sC, 0x14
+        JUMP Z, regSwitch60
+
+        COMPARE sC, 0x10
+        JUMP Z, regSwitch61
+
+        COMPARE sC, 0x0c
+        JUMP Z, regSwitch62
+
+        COMPARE sC, 0x08
+        JUMP Z, regSwitch63
+
+        COMPARE sC, 0x04
+        JUMP Z, regSwitch64
+
+        COMPARE sC, 0x00				
+        JUMP Z, final
+	
+mult:
+		LOAD sD, s1
+		AND sD, sA
+		COMPARE sD, sA
+        JUMP Z, save      
+        SL0 sA
+        SUB sC, 1
+		SL0 s0
+		JUMP loop
+        
+save:
+	    SL0 sA
+        SUB sC, 1
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, s0
+        SL0 s0
+        JUMP C, carry1      	
+		JUMP loop
+
+;carry:
+;        LOAD sF, 0x01
+;        RETURN
+
+carry1:
+        LOAD sF, 0x01
+        JUMP loop 
+        
+regSwitch1:
+        LOAD s0, s5
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0x0f
+    mult2:
+		LOAD sD, s1
+		AND sD, sA
+		COMPARE sD, sA
+        JUMP Z, save2      
+        SL0 sA
+		SL0 s0
+		JUMP mult
+        
+    save2:
+	    SL0 sA
+        ADDCY sB, s0
+		SL0 s0	
+	    JUMP C , carry2       	
+		JUMP mult
+
+    carry2:
+        LOAD sF, 0x01
+        JUMP mult
+
+regSwitch2:
+		OUTPUT sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch3:
+        SR0 sB
+		STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch4:
+        SR0 sB
+		STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch5:
+        SR0 sB
+		STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch6:
+        SR0 sB
+		STORE sB, 0x02
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch7:
+        SR0 sB
+		STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch8:
+        SR0 sB
+		STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult    
+
+regSwitch9:
+        SR0 sB
+		FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch10:
+        SR0 sB
+		FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch11:
+        SR0 sB
+		FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch12:
+        SR0 sB
+		FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch13:
+        SR0 sB
+        FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02        
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch14:
+        SR0 sB
+		FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch15:
+        SR0 sB
+		FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s9
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch16:
+        SR0 sB
+		LOAD sE, 0x00
+        STORE sE, 0x07 
+        FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s9
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch17:
+        SR0 sB
+		FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch18:
+        SR0 sB
+		FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+        
+regSwitch19:
+        SR0 sB
+		FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch20:
+        SR0 sB
+		FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch21:
+        SR0 sB
+		FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch22:
+        SR0 sB
+		FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;       JUMP C, carry
+        STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+        
+regSwitch23:
+        SR0 sB
+		FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch24:
+        SR0 sB
+		FETCH sE, 0x06
+        OUTPUT sE, 0x06
+        LOAD sE, 0x00
+        STORE sE, 0x06
+        FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+           
+regSwitch25:
+        SR0 sB
+        FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch26:
+        SR0 sB
+        FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch27:
+        SR0 sB
+        FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+        
+regSwitch28:
+        SR0 sB
+        FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+ ;       JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch29:
+        SR0 sB
+        FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+        
+regSwitch30:
+        SR0 sB
+        FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+      
+regSwitch31:
+        SR0 sB
+        FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s8
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch32:
+        SR0 sB
+		FETCH sE, 0x05
+        OUTPUT sE, 0x05
+        LOAD sE, 0x00
+        STORE sE, 0x05
+        FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s8
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+        
+regSwitch33:
+        SR0 sB
+        FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+      
+regSwitch34:
+        SR0 sB
+        FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+        
+regSwitch35:
+        SR0 sB
+        FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch36:
+        SR0 sB
+        FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+        
+regSwitch37:
+        SR0 sB
+        FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+
+regSwitch38:
+        SR0 sB
+        FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch39:
+        SR0 sB
+        FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch40:
+        SR0 sB
+		FETCH sE, 0x04
+        OUTPUT sE, 0x04
+        LOAD sE, 0x00
+        STORE sE, 0x04
+        FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+           
+regSwitch41:
+        SR0 sB
+        FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch42:
+        SR0 sB
+        FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch43:
+        SR0 sB
+        FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch44:
+        SR0 sB
+        FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+ ;       JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+      
+regSwitch45:
+        SR0 sB
+        FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+ ;       JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch46:
+        SR0 sB
+        FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch47:
+        SR0 sB
+        FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s7
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch48:
+        SR0 sB
+		FETCH sE, 0x03
+        OUTPUT sE, 0x03
+        LOAD sE, 0x00
+        STORE sE, 0x03
+        FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s7
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch49:
+        SR0 sB
+        FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch50:
+        SR0 sB
+        FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s5
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+        
+regSwitch51:
+        SR0 sB
+        FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+ ;       JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+        
+regSwitch52:
+        SR0 sB
+        FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s4
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch53:
+        SR0 sB
+        FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch54:
+        SR0 sB
+        FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s3
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch55:
+        SR0 sB
+        FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0x0f
+        JUMP mult
+       
+regSwitch56:
+        SR0 sB
+		FETCH sE, 0x02
+        OUTPUT sE, 0x02
+        LOAD sE, 0x00
+        STORE sE, 0x02
+        FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02
+        LOAD sB, 0x00
+        LOAD sA, 0x01
+        LOAD s0, s2
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0x0f
+        JUMP mult
+           
+regSwitch57:
+        SR0 sB
+        FETCH sE, 0x00
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x00
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+       
+regSwitch58:
+        SR0 sB
+        FETCH sE, 0x07
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x07
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s5
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+     
+regSwitch59:
+        SR0 sB
+        FETCH sE, 0x06
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x06
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+      
+regSwitch60:
+        SR0 sB
+        FETCH sE, 0x05
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x05
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s4
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+      
+regSwitch61:
+        SR0 sB
+        FETCH sE, 0x04
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x04
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+      
+regSwitch62:
+        SR0 sB
+        FETCH sE, 0x03
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+ ;       JUMP C, carry
+        STORE sB, 0x03
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s3
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch63:
+        SR0 sB
+        FETCH sE, 0x02
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x02
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s6
+        AND s0, 0x0f
+		AND s1, 0xf0
+        JUMP mult
+
+regSwitch64:
+        SR0 sB
+		FETCH sE, 0x01
+        OUTPUT sE, 0x01
+        LOAD sE, 0x00
+        STORE sE, 0x01
+        FETCH sE, 0x01
+        ADDCY sB, sF
+        LOAD sF, 0x00
+        ADDCY sB, sE
+;        JUMP C, carry
+        STORE sB, 0x01
+        LOAD sB, 0x00
+        LOAD sA, 0x10
+        LOAD s0, s2
+        LOAD s1, s6
+        AND s0, 0xf0
+		AND s1, 0xf0
+        JUMP mult 	
+
+final:
+        
+        RETURN
