@@ -1,0 +1,34 @@
+main:
+
+	load s1, 0xad
+	load s2, 0xfa
+   	load s3, 0xbd        
+    	load s4, 0xaa
+
+    	load s6, 0xff
+	load s7, 0xbb
+    	load s8, 0xFF
+    	load s9, 0xbf
+    
+
+    	ADDCY s4, s9
+    	OUTPUT s4, 0004
+
+	ADDCY s3, s8
+	OUTPUT s3, 0003
+
+    	ADDCY s2, s7
+	OUTPUT s2, 0002
+
+    	ADDCY s1, s6
+   	OUTPUT s1, 0001
+
+    	Jump C , carry	
+    
+    	RETURN
+
+    	carry:
+    	LOAD sB, 0x01
+    	OUTPUT sB, 0000
+
+    	RETURN
