@@ -1,0 +1,190 @@
+main:
+	LOAD s0, 0x00
+	LOAD s1, 0x00
+	LOAD s2, 0x00
+	LOAD s3, 0x0a
+
+    STORE s0, 0x4
+    STORE s1, 0x5
+    STORE s2, 0x6
+    STORE s3, 0x7
+
+	LOAD s4, 0x00
+	LOAD s5, 0x00
+	LOAD s6, 0x00
+	LOAD s7, 0x0a
+
+    STORE s4, 0xc
+    STORE s4, 0x14
+    STORE s5, 0xd
+    STORE s5, 0x15
+    STORE s6, 0xe
+    STORE s6, 0x16
+    STORE s7, 0xf
+    STORE s7, 0x17				
+        
+    FETCH sA, 0x4
+    FETCH sB, 0x5
+    FETCH sC, 0x6
+    FETCH sD, 0x7
+
+loop1:
+    COMPARE sD, 0
+    JUMP NZ, adderFunc1
+
+    COMPARE sC, 0
+    JUMP NZ, adderFunc2
+
+    COMPARE sB, 0
+    JUMP NZ, adderFunc3
+       
+    COMPARE sA, 0
+    JUMP NZ, adderFunc4
+    JUMP final   
+       
+adderFunc1:
+    SUB sD,1
+    JUMP adderFunc
+
+adderFunc2:
+    SUB sC,1
+    LOAD sD, 0xff
+    JUMP adderFunc
+
+adderFunc3:
+    SUB sB, 1
+    LOAD sD, 0xff
+    LOAD sC, 0xff
+    JUMP adderFunc
+
+adderFunc4:
+    SUB sA, 1
+    LOAD sD, 0xff
+    LOAD sC, 0xff
+    LOAD sB, 0xff
+    JUMP adderFunc
+
+adderFunc:
+    
+    FETCH s0, 0xf
+    FETCH s1, 0x17
+    ADDCY s0, s1
+    STORE s0, 0x17
+    
+    FETCH s0, 0xe
+    FETCH s1, 0x16
+    ADDCY s0, s1
+    STORE s0, 0x16
+    
+    FETCH s0, 0xd
+    FETCH s1, 0x15
+    ADDCY s0, s1
+    STORE s0, 0x15
+
+    FETCH s0, 0xc
+    FETCH s1, 0x14
+    ADDCY s0, s1
+    STORE s0, 0x14
+
+    FETCH s0, 0xb
+    FETCH s1, 0x13
+    ADDCY s0, s1
+    STORE s0, 0x13
+
+    FETCH s0, 0xa
+    FETCH s1, 0x12
+    ADDCY s0, s1
+    STORE s0, 0x12
+
+    FETCH s0, 0x9
+    FETCH s1, 0x11
+    ADDCY s0, s1
+    STORE s0, 0x11
+
+    FETCH s0, 0x8
+    FETCH s1, 0x10
+    ADDCY s0, s1
+    STORE s0, 0x10
+     
+    JUMP loop1
+
+final:
+    FETCH s0, 0xf
+    FETCH s1, 0x17
+    SUBCY s1, s0
+    STORE s1, 0x17
+    
+    FETCH s0, 0xe
+    FETCH s1, 0x16
+    SUBCY s1, s0
+    STORE s1, 0x16
+    
+    FETCH s0, 0xd
+    FETCH s1, 0x15
+    SUBCY s1, s0
+    STORE s1, 0x15
+
+    FETCH s0, 0xc
+    FETCH s1, 0x14
+    SUBCY s1, s0
+    STORE s1, 0x14
+
+    FETCH s0, 0xb
+    FETCH s1, 0x13
+    SUBCY s1, s0
+    STORE s1, 0x13
+
+    FETCH s0, 0xa
+    FETCH s1, 0x12
+    SUBCY s1, s0
+    STORE s1, 0x12
+
+    FETCH s0, 0x9
+    FETCH s1, 0x11
+    SUBCY s1, s0
+    STORE s1, 0x11
+
+    FETCH s0, 0x8
+    FETCH s1, 0x10
+    SUBCY s1, s0
+    STORE s1, 0x10
+
+
+    
+    
+    FETCH s0, 0x10
+    FETCH s1, 0x11
+    FETCH s2, 0x12
+    FETCH s3, 0x13
+    FETCH s4, 0x14
+    FETCH s5, 0x15
+    FETCH s6, 0x16
+    FETCH s7, 0x17
+    OUTPUT s0, 0x0
+    OUTPUT s1, 0x1
+    OUTPUT s2, 0x2
+    OUTPUT s3, 0x3
+    OUTPUT s4, 0x4
+    OUTPUT s5, 0x5
+    OUTPUT s6, 0x6
+    OUTPUT s7, 0x7
+        
+raFunc:
+    LOAD s0, 0x00
+    LOAD s1, 0x00
+    LOAD s2, 0x00
+    LOAD s3, 0x00
+    LOAD s4, 0x00
+    LOAD s5, 0x00
+    LOAD s6, 0x00
+    LOAD s7, 0x00
+    LOAD s8, 0x00
+    LOAD s9, 0x00
+    LOAD sa, 0x00
+    LOAD sb, 0x00
+    LOAD sc, 0x00
+    LOAD sd, 0x00
+    LOAD se, 0x00
+    LOAD sf, 0x00 
+  
+    ;RETURN
